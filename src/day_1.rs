@@ -2,12 +2,10 @@ use std::fs;
 
 pub fn read_input() -> Vec<i32> {
     let input = fs::read_to_string("day_1_input.txt").unwrap();
-    let ints: Vec<i32> = input
-        .split("\r\n")
-        .into_iter()
-        .map(|i| i.parse::<i32>().unwrap())
-        .collect();
-    ints
+    input
+        .lines()
+        .map(|i| i.trim().parse::<i32>().unwrap())
+        .collect()
 }
 
 pub fn two_inputs_sum_2020(input: Vec<i32>) -> (i32, i32) {
