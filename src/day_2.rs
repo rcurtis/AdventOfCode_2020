@@ -11,7 +11,7 @@ pub fn read_input() -> Vec<Pass> {
     let input = fs::read_to_string("day_2_input.txt").unwrap();
     input
         .lines()
-        .map(parse_rule_and_password)
+        .map(parse)
         .collect()
 }
 
@@ -41,7 +41,7 @@ pub fn count_valid_part_2(input: &Vec<Pass>) -> usize {
         .count()
 }
 
-pub fn parse_rule_and_password(input: &str) -> Pass {
+pub fn parse(input: &str) -> Pass {
     let split : Vec<_> = input.split(":").collect();
     let left = split[0];
     let password = split[1].trim();
@@ -68,7 +68,7 @@ mod tests {
 
     #[test]
     fn can_parse() {
-        let it = parse_rule_and_password("1-3 a: abcde");
+        let it = parse("1-3 a: abcde");
         assert_eq!('a', it.ch);
         assert_eq!(1, it.min);
         assert_eq!(3, it.max);
@@ -77,43 +77,43 @@ mod tests {
 
     #[test]
     fn passes_valid1() {
-        let it = parse_rule_and_password("1-3 a: abcde");
+        let it = parse("1-3 a: abcde");
         assert!(is_valid_password(&it))
     }
 
     #[test]
     fn passes_valid2() {
-        let it = parse_rule_and_password("2-9 c: ccccccccc");
+        let it = parse("2-9 c: ccccccccc");
         assert!(is_valid_password(&it))
     }
 
     #[test]
     fn fails_invalid1() {
-        let it = parse_rule_and_password("1-3 b: cdefg");
+        let it = parse("1-3 b: cdefg");
         assert!(!is_valid_password(&it))
     }
 
     #[test]
     fn fails_invalid2() {
-        let it = parse_rule_and_password("2-3 b: cbdefg");
+        let it = parse("2-3 b: cbdefg");
         assert!(!is_valid_password(&it))
     }
 
     #[test]
     fn passes_valid_part_2_1() {
-        let it = parse_rule_and_password("1-3 a: abcde");
+        let it = parse("1-3 a: abcde");
         assert!(is_valid_password_part_2(&it))
     }
 
     #[test]
     fn passes_invalid_part_2_2() {
-        let it = parse_rule_and_password("1-3 b: cdefg");
+        let it = parse("1-3 b: cdefg");
         assert!(!is_valid_password_part_2(&it))
     }
 
     #[test]
     fn passes_invalid_part_2_3() {
-        let it = parse_rule_and_password("2-9 c: ccccccccc");
+        let it = parse("2-9 c: ccccccccc");
         assert!(!is_valid_password_part_2(&it))
     }
 }
