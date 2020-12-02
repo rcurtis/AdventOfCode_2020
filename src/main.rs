@@ -1,10 +1,14 @@
 #![allow(warnings)]
 
 mod day_1;
+mod day_2;
 
 fn main() {
     do_day_1_part_1();
     do_day_1_part_2();
+
+    do_day_2_part_1();
+    do_day_2_part_2();
 }
 
 fn do_day_1_part_1() {
@@ -21,3 +25,17 @@ fn do_day_1_part_2() {
     println!("Found {}, {}, and {} that add up to 2020", &a, &b, &c);
     println!("{} * {} * {} = {}", &a, &b, &c, a * b * c);
 }
+
+
+fn do_day_2_part_1() {
+    let input = day_2::read_input();
+    let count = day_2::count_valid(&input);
+    println!("Found {} valid passwords, {} invalid passwords", count, input.len() - count);
+}
+
+fn do_day_2_part_2() {
+    let input = day_2::read_input();
+    let count = day_2::count_valid_part_2(&input);
+    println!("Found {} valid passwords, {} invalid passwords", count, input.len() - count);
+}
+
