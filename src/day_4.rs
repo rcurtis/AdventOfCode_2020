@@ -11,14 +11,14 @@ pub fn read_input() -> Vec<String> {
 
 fn map_has_all_keys(map: &HashMap<&str, &str>, tokens: &[&str]) -> bool {
     for token in tokens {
-        if ! map.contains_key(token) {
+        if !map.contains_key(token) {
             return false;
         }
     }
     true
 }
 
-fn tokenize(input :&str) -> HashMap<&str, &str> {
+fn tokenize(input: &str) -> HashMap<&str, &str> {
     let tokens: Vec<_> = input
         .lines()
         .flat_map(|x| x.split_whitespace().collect::<Vec<_>>())
@@ -48,7 +48,7 @@ fn parse_passport_part_2(input: &str) -> bool {
         let valid_hcl = is_valid_hair_color(map["hcl"]);
         let valid_ecl = is_valid_eye_color(map["ecl"]);
         let valid_pid = is_valid_pid(map["pid"]);
-        return  valid_byr && valid_iyr && valid_eyr && valid_hgt && valid_hcl && valid_ecl && valid_pid;
+        return valid_byr && valid_iyr && valid_eyr && valid_hgt && valid_hcl && valid_ecl && valid_pid;
     }
 
     false
@@ -63,15 +63,15 @@ fn is_valid_year(input: &str, min: i32, max: i32) -> bool {
 }
 
 fn is_valid_height(height: &str) -> bool {
-    let numerics : Vec<char> = height.chars().take_while(|x| x.is_digit(10)).collect();
-    if numerics.len() == 0 {return false;}
+    let numerics: Vec<char> = height.chars().take_while(|x| x.is_digit(10)).collect();
+    if numerics.len() == 0 { return false; }
 
     let num = String::from_iter(numerics.iter()).parse::<i32>();
-    if num.is_err() {return false;}
+    if num.is_err() { return false; }
     let num = num.unwrap();
 
     let measure_str = height.chars().skip_while(|x| x.is_digit(10)).collect::<Vec<_>>();
-    if measure_str.len() == 0 {return false;}
+    if measure_str.len() == 0 { return false; }
     let measure_str = String::from_iter(measure_str.iter());
 
     match measure_str.as_str() {
@@ -82,8 +82,8 @@ fn is_valid_height(height: &str) -> bool {
 }
 
 fn is_valid_hair_color(color: &str) -> bool {
-    if color.len() != 7 {return false;}
-    if color.chars().next().unwrap() != '#' {return false;}
+    if color.len() != 7 { return false; }
+    if color.chars().next().unwrap() != '#' { return false; }
 
     let digits = color.chars().skip(1).collect::<Vec<_>>();
 
@@ -99,7 +99,7 @@ fn is_valid_eye_color(input: &str) -> bool {
 }
 
 fn is_valid_pid(input: &str) -> bool {
-    if input.len() != 9 {return false;}
+    if input.len() != 9 { return false; }
     !input.chars().any(|x| !x.is_digit(10))
 }
 
