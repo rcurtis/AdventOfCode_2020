@@ -1,8 +1,7 @@
-#![allow(warnings)]
-
 mod day_1;
 mod day_2;
 mod day_3;
+mod day_4;
 
 fn main() {
     do_day_1_part_1();
@@ -13,6 +12,9 @@ fn main() {
 
     do_day_3_part_1();
     do_day_3_part_2();
+
+    do_day_4_part_1();
+    do_day_4_part_2();
 }
 
 fn do_day_1_part_1() {
@@ -55,5 +57,16 @@ fn do_day_3_part_2() {
     println!("Ran into {} trees.", count);
 }
 
+fn do_day_4_part_1() {
+    let input = day_4::read_input();
+    let valid_count = day_4::count_valid_passports_part_1(&input);
+    println!("Valid passport count part 1: {}", valid_count);
+}
+
+fn do_day_4_part_2() {
+    let input = day_4::read_input();
+    let valid_count = day_4::count_valid_passports_part_2(&input);
+    println!("Valid passport count part 2: {}", valid_count);
+}
 
 
