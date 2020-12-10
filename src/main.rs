@@ -1,7 +1,11 @@
+#![allow(warnings)]
+
 mod day_1;
 mod day_2;
 mod day_3;
 mod day_4;
+mod day_5;
+mod util;
 
 fn main() {
     do_day_1_part_1();
@@ -15,6 +19,9 @@ fn main() {
 
     do_day_4_part_1();
     do_day_4_part_2();
+
+    do_day_5_part_1();
+    do_day_5_part_2();
 }
 
 fn do_day_1_part_1() {
@@ -69,4 +76,14 @@ fn do_day_4_part_2() {
     println!("Valid passport count part 2: {}", valid_count);
 }
 
+fn do_day_5_part_1() {
+    let input = day_5::read_input();
+    let max_seat = day_5::max_seat_id(&input);
+    println!("Day 5: Max seat id: {:?}", max_seat);
+}
 
+fn do_day_5_part_2() {
+    let input = day_5::read_input();
+    let missing_seat = day_5::get_missing_seat(&input);
+    println!("Day 5: My seat: {:?}", missing_seat);
+}
