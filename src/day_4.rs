@@ -9,11 +9,13 @@ pub fn read_input() -> Vec<String> {
         .collect::<Vec<String>>()
 }
 
+fn map_has_all_keys_fn(map: &HashMap<&str, &str>, tokens: &[&str]) -> bool {
+    tokens.iter().any(|token| !map.contains_key(token))
+}
+
 fn map_has_all_keys(map: &HashMap<&str, &str>, tokens: &[&str]) -> bool {
     for token in tokens {
-        if !map.contains_key(token) {
-            return false;
-        }
+        if !map.contains_key(token) { return false; }
     }
     true
 }

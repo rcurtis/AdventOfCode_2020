@@ -6,6 +6,7 @@ mod day_3;
 mod day_4;
 mod day_5;
 mod util;
+mod day_6;
 
 fn main() {
     do_day_1_part_1();
@@ -22,6 +23,8 @@ fn main() {
 
     do_day_5_part_1();
     do_day_5_part_2();
+
+    do_day_6_part_1();
 }
 
 fn do_day_1_part_1() {
@@ -86,4 +89,10 @@ fn do_day_5_part_2() {
     let input = day_5::read_input();
     let missing_seat = day_5::get_missing_seat(&input);
     println!("Day 5: My seat: {:?}", missing_seat);
+}
+
+fn do_day_6_part_1() {
+    let input = day_6::read_input();
+    let yes_count = day_6::count_yeses(&input);
+    println!("Day 6: Yes count: {:?}", yes_count);
 }
