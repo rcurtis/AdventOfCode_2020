@@ -25,6 +25,7 @@ fn main() {
     do_day_5_part_2();
 
     do_day_6_part_1();
+    do_day_6_part_2();
 }
 
 fn do_day_1_part_1() {
@@ -93,6 +94,12 @@ fn do_day_5_part_2() {
 
 fn do_day_6_part_1() {
     let input = day_6::read_input();
-    let yes_count = day_6::count_yeses(&input);
-    println!("Day 6: Yes count: {:?}", yes_count);
+    let yes_count = day_6::count_yeses_part_1(&input);
+    println!("Day 6 part 1: Yes count: {:?}", yes_count);
+}
+
+fn do_day_6_part_2() {
+    let input = day_6::read_input();
+    let yes_count = day_6::count_yeses_part_2(&input);
+    println!("Day 6 part 2: Yes count: {:?}", yes_count);
 }
