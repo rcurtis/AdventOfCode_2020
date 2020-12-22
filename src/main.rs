@@ -1,5 +1,7 @@
 #![allow(warnings)]
 
+use crate::day_8::{Instruction, Token};
+
 mod day_1;
 mod day_2;
 mod day_3;
@@ -7,6 +9,8 @@ mod day_4;
 mod day_5;
 mod util;
 mod day_6;
+mod day_7;
+mod day_8;
 
 fn main() {
     do_day_1_part_1();
@@ -26,6 +30,9 @@ fn main() {
 
     do_day_6_part_1();
     do_day_6_part_2();
+
+    do_day_8_part_1();
+    do_day_8_part_2();
 }
 
 fn do_day_1_part_1() {
@@ -102,4 +109,18 @@ fn do_day_6_part_2() {
     let input = day_6::read_input();
     let yes_count = day_6::count_yeses_part_2(&input);
     println!("Day 6 part 2: Yes count: {:?}", yes_count);
+}
+
+fn do_day_8_part_1() {
+    let input = day_8::read_input();
+    let mut parsed : Vec<Token> = input.iter().map(|x| day_8::str_to_instruction(x)).collect();
+    let loop_acc = day_8::acc_value_infinite_loop(&parsed);
+    println!("Accumulator when loop detected: {}", loop_acc);
+}
+
+fn do_day_8_part_2() {
+    let input = day_8::read_input();
+    let mut parsed : Vec<Token> = input.iter().map(|x| day_8::str_to_instruction(x)).collect();
+    let loop_acc = day_8::swap_instructions_until_winner_found(&parsed);
+    println!("Accumulator after finding winning combo: {}", loop_acc);
 }
