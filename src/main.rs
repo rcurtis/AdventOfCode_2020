@@ -11,6 +11,7 @@ mod util;
 mod day_6;
 mod day_7;
 mod day_8;
+mod day_9;
 
 fn main() {
     do_day_1_part_1();
@@ -33,6 +34,9 @@ fn main() {
 
     do_day_8_part_1();
     do_day_8_part_2();
+
+    do_day_9_part_1();
+    do_day_9_part_2();
 }
 
 fn do_day_1_part_1() {
@@ -123,4 +127,17 @@ fn do_day_8_part_2() {
     let mut parsed : Vec<Token> = input.iter().map(|x| day_8::str_to_instruction(x)).collect();
     let loop_acc = day_8::swap_instructions_until_winner_found(&parsed);
     println!("Accumulator after finding winning combo: {}", loop_acc);
+}
+
+fn do_day_9_part_1() {
+    let input = day_9::load_input();
+    let actual = day_9::find_first_invalid(&input, 25);
+    println!("First value that did was not sum in previous 25: {}", actual);
+}
+
+fn do_day_9_part_2() {
+    let input = day_9::load_input();
+    let actual = day_9::numbers_that_sum_target(&input, 1124361034);
+    println!("Numbers that sum to 1124361034 -min: {}, max: {}, sum:{}",
+             actual.0, actual.1, actual.0 + actual.1);
 }
